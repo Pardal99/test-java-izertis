@@ -25,4 +25,5 @@ public class PriceRequest {
     @NotNull(message = "applicationDate must not be null")
     @JsonProperty("application_date")
     private OffsetDateTime applicationDate;
+    
 }

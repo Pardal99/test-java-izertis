@@ -1,0 +1,30 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: test-java-izertis
+  jackson:
+    default-property-inclusion: non_null
+    property-naming-strategy: SNAKE_CASE
+  datasource:
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+  sql:
+    init:
+      schema-locations: classpath:/h2-db/schema.sql
+      data-locations: classpath:/h2-db/data.sql
+      mode: always
+springdoc:
+  api-docs:
+    enabled: true
+

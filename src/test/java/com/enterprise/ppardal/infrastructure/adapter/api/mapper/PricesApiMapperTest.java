@@ -14,15 +14,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.enterprise.ppardal.domain.model.Price;
 import com.enterprise.ppardal.infrastructure.adapter.api.model.response.PriceResponse;
-import com.enterprise.ppardal.infrastructure.adapter.persistence.model.PriceEntity;
 
 @SpringBootTest(classes = PricesApiMapperImpl.class)
 class PricesApiMapperTest {
 
     @Autowired
     private PricesApiMapper mapper;
-
-    // ========== GROUP A: Full mapping ==========
 
     @Test
     void shouldMapAllFieldsCorrectly() {

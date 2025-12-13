@@ -2,7 +2,9 @@ package com.enterprise.ppardal.infrastructure.adapter.api.model.request;
 
 import java.time.OffsetDateTime;
 
+import com.enterprise.ppardal.config.deserializer.StrictOffsetDateTimeDeserializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -24,6 +26,7 @@ public class PriceRequest {
      */
     @NotNull(message = "applicationDate must not be null")
     @JsonProperty("application_date")
+    @JsonDeserialize(using = StrictOffsetDateTimeDeserializer.class)
     private OffsetDateTime applicationDate;
     
 }

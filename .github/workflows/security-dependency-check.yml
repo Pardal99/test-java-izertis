@@ -6,6 +6,7 @@ permissions:
   id-token: write
 
 on:
+  # Ejecución manual
   workflow_dispatch:
     inputs:
       branch:
@@ -13,16 +14,24 @@ on:
         required: true
         default: "main"
 
+  # Ejecución automática tras finalizar el CI en main
+  workflow_run:
+    workflows: ["CI - Build, Test, Coverage and Sonar"]
+    branches: [main]
+    types:
+      - completed
+
 jobs:
   dependency-check:
     name: OWASP Dependency Check
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.branch }}
+          ref: ${{ github.event.workflow_run.head_branch || inputs.branch }}
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -42,11 +51,16 @@ jobs:
       - name: Run OWASP Dependency Check
         run: mvn -Psecurity-scan dependency-check:check
 
+      - name: Prepare Dependency-Check report for GitHub Pages
+        run: |
+          mkdir -p pages/dependency-check
+          cp -r docs/dependency-check/* pages/dependency-check/
+
       # GitHub Pages artifact (HTML)
-      - name: Upload Pages artifact
+      - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/dependency-check
+          path: pages
 
   deploy-pages:
     name: Deploy OWASP report to GitHub Pages

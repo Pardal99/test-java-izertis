@@ -36,3 +36,8 @@ jobs:
 
       - name: Generate JaCoCo report and check coverage
         run: mvn jacoco:report jacoco:check
+
+      - name: SonarCloud analysis
+        run: mvn -B verify sonar:sonar
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "c819d484-bf0d-4b65-8702-e6bf6599b7e5",
+		"name": "test-java-izertis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34552655"
+	},
+	"item": [
+		{
+			"name": "prices",
+			"item": [
+				{
+					"name": "find-by-application-date",
+					"item": [
+						{
+							"name": "use-case-1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"brand_id\": 1,\r\n  \"product_id\": 35455,\r\n  \"application_date\": \"2020-06-14T10:00:00+02:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/prices/find-by-application-date",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"prices",
+										"find-by-application-date"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "use-case-2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"brand_id\": 1,\r\n  \"product_id\": 35455,\r\n  \"application_date\": \"2020-06-14T16:00:00+02:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/prices/find-by-application-date",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"prices",
+										"find-by-application-date"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "use-case-3",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"brand_id\": 1,\r\n  \"product_id\": 35455,\r\n  \"application_date\": \"2020-06-14T10:00:00+02:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/prices/find-by-application-date",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"prices",
+										"find-by-application-date"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "use-case-4",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"brand_id\": 1,\r\n  \"product_id\": 35455,\r\n  \"application_date\": \"2020-06-15T10:00:00+02:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/prices/find-by-application-date",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"prices",
+										"find-by-application-date"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "use-case-5",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"brand_id\": 1,\r\n  \"product_id\": 35455,\r\n  \"application_date\": \"2020-06-16T21:00:00+02:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/prices/find-by-application-date",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"prices",
+										"find-by-application-date"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "extra-use-case-6",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"brand_id\": 1,\r\n  \"product_id\": 35455,\r\n  \"application_date\": \"2020-06-14T18:00:00+02:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/prices/find-by-application-date",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"prices",
+										"find-by-application-date"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/v1",
+			"type": "string"
+		}
+	]
+}

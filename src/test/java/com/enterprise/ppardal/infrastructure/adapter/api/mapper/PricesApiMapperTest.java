@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.enterprise.ppardal.domain.model.Price;
 import com.enterprise.ppardal.infrastructure.adapter.api.model.response.PriceResponse;
 
-@SpringBootTest(classes = PricesApiMapperImpl.class)
+@SpringBootTest
 class PricesApiMapperTest {
 
     @Autowired
@@ -32,7 +32,7 @@ class PricesApiMapperTest {
                 .priceList(1)
                 .startDate(start)
                 .endDate(end)
-                .price(BigDecimal.valueOf(35.50))
+                .price(new BigDecimal("35.50"))
                 .currency("EUR")
                 .priority(0)
                 .build();
@@ -43,14 +43,13 @@ class PricesApiMapperTest {
         assertEquals(1L, response.getBrandId());
         assertEquals(35455L, response.getProductId());
         assertEquals(1, response.getPriceList());
-        assertEquals(BigDecimal.valueOf(35.50), response.getPrice());
-
+        assertEquals(new BigDecimal("35.50"), response.getPrice());
         assertEquals(start.atOffset(ZoneOffset.UTC), response.getStartDate());
         assertEquals(end.atOffset(ZoneOffset.UTC), response.getEndDate());
     }
 
     @Test
-    void shouldReturnNullWhenPriceIsNull() {
+    void shouldReturnNullWhenSourceIsNull() {
         PriceResponse response = mapper.toPriceResponse(null);
         assertNull(response);
     }

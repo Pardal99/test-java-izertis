@@ -99,4 +99,5 @@ class PricesServiceTest {
                 .priority(priority)
                 .build();
     }
+
 }

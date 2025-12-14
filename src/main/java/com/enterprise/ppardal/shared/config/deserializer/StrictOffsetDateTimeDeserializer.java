@@ -1,4 +1,4 @@
-package com.enterprise.ppardal.config.deserializer;
+package com.enterprise.ppardal.shared.config.deserializer;
 
 import java.io.IOException;
 import java.time.OffsetDateTime;

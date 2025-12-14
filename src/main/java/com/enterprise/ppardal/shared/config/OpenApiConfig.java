@@ -1,4 +1,4 @@
-package com.enterprise.ppardal.config;
+package com.enterprise.ppardal.shared.config;
 
 import org.springframework.context.annotation.Configuration;
 

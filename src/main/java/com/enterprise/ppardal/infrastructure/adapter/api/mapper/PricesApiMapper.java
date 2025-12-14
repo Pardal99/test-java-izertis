@@ -1,26 +1,24 @@
 package com.enterprise.ppardal.infrastructure.adapter.api.mapper;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
-
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import com.enterprise.ppardal.domain.model.Price;
 import com.enterprise.ppardal.infrastructure.adapter.api.model.response.PriceResponse;
 
-@Mapper(componentModel = "spring")
-public interface PricesApiMapper {
+import lombok.AllArgsConstructor;
 
-    @Mapping(target = "startDate", source = "startDate", qualifiedByName = "mapDateTime")
-    @Mapping(target = "endDate", source = "endDate", qualifiedByName = "mapDateTime")
-    PriceResponse toPriceResponse(Price price);
+@Component
+@AllArgsConstructor
+public class PricesApiMapper {
 
-    // Mapping method for LocalDateTime to OffsetDateTime using UTC offset
-    @Named("mapDateTime")
-    default OffsetDateTime mapDateTime(LocalDateTime value) {
-        return value == null ? null : value.atOffset(ZoneOffset.UTC);
+    private final ModelMapper modelMapper;
+
+    public PriceResponse toPriceResponse(Price price) {
+        if (price == null) {
+            return null;
+        }
+        return modelMapper.map(price, PriceResponse.class);
     }
+    
 }

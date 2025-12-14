@@ -3,6 +3,7 @@ package com.enterprise.ppardal.infrastructure.adapter.persistence.mapper;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,27 +16,25 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.enterprise.ppardal.domain.model.Price;
 import com.enterprise.ppardal.infrastructure.adapter.persistence.model.PriceEntity;
 
-@SpringBootTest(classes = PricesPersistenceMapperImpl.class)
+@SpringBootTest
 class PricesPersistenceMapperTest {
 
     @Autowired
     private PricesPersistenceMapper mapper;
 
-    // ---------- toPriceEntity ----------
-
     @Test
     void shouldMapPriceToPriceEntity() {
-        Price price = Price.builder()
-                .id(1L)
-                .brandId(1L)
-                .productId(35455L)
-                .priceList(1)
-                .startDate(LocalDateTime.of(2020, 6, 14, 0, 0))
-                .endDate(LocalDateTime.of(2020, 12, 31, 23, 59, 59))
-                .price(BigDecimal.valueOf(35.50))
-                .currency("EUR")
-                .priority(0)
-                .build();
+            Price price = Price.builder()
+                    .id(1L)
+                    .brandId(1L)
+                    .productId(35455L)
+                    .priceList(1)
+                    .startDate(LocalDateTime.of(2020, 6, 14, 0, 0))
+                    .endDate(LocalDateTime.of(2020, 12, 31, 23, 59, 59))
+                    .price(BigDecimal.valueOf(35.50))
+                    .currency("EUR")
+                    .priority(0)
+                    .build();
 
         PriceEntity entity = mapper.toPriceEntity(price);
 
@@ -57,8 +56,6 @@ class PricesPersistenceMapperTest {
         assertNull(entity);
     }
 
-    // ---------- toPrice ----------
-
     @Test
     void shouldMapPriceEntityToPrice() {
         PriceEntity entity = new PriceEntity(
@@ -70,8 +67,7 @@ class PricesPersistenceMapperTest {
                 3,
                 BigDecimal.valueOf(30.50),
                 "EUR",
-                1
-        );
+                1);
 
         Price price = mapper.toPrice(entity);
 
@@ -93,8 +89,6 @@ class PricesPersistenceMapperTest {
         assertNull(price);
     }
 
-    // ---------- toPriceList ----------
-
     @Test
     void shouldMapPriceEntityListToPriceList() {
         PriceEntity entity1 = new PriceEntity(
@@ -106,8 +100,7 @@ class PricesPersistenceMapperTest {
                 1,
                 BigDecimal.valueOf(35.50),
                 "EUR",
-                0
-        );
+                0);
 
         PriceEntity entity2 = new PriceEntity(
                 2L,
@@ -118,8 +111,7 @@ class PricesPersistenceMapperTest {
                 4,
                 BigDecimal.valueOf(38.95),
                 "EUR",
-                1
-        );
+                1);
 
         List<Price> prices = mapper.toPriceList(List.of(entity1, entity2));
 
@@ -130,8 +122,10 @@ class PricesPersistenceMapperTest {
     }
 
     @Test
-    void shouldReturnNullWhenPriceEntityListIsNull() {
+    void shouldReturnEmptyListWhenPriceEntityListIsNull() {
         List<Price> prices = mapper.toPriceList(null);
-        assertNull(prices);
+
+        assertNotNull(prices);
+        assertTrue(prices.isEmpty());
     }
 }

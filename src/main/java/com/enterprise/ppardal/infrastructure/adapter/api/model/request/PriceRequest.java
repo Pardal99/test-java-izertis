@@ -2,7 +2,7 @@ package com.enterprise.ppardal.infrastructure.adapter.api.model.request;
 
 import java.time.OffsetDateTime;
 
-import com.enterprise.ppardal.config.deserializer.StrictOffsetDateTimeDeserializer;
+import com.enterprise.ppardal.shared.config.deserializer.StrictOffsetDateTimeDeserializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 

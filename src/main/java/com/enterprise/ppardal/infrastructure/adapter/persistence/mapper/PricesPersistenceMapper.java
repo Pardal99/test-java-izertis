@@ -1,19 +1,37 @@
 package com.enterprise.ppardal.infrastructure.adapter.persistence.mapper;
 
+import java.util.Collections;
 import java.util.List;
 
-import org.mapstruct.Mapper;
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import com.enterprise.ppardal.domain.model.Price;
 import com.enterprise.ppardal.infrastructure.adapter.persistence.model.PriceEntity;
 
-@Mapper(componentModel = "spring")
-public interface PricesPersistenceMapper {
+import lombok.RequiredArgsConstructor;
 
-    PriceEntity toPriceEntity(Price price);
+@Component
+@RequiredArgsConstructor
+public class PricesPersistenceMapper {
 
-    Price toPrice(PriceEntity priceEntity);
+    private final ModelMapper modelMapper;
 
-    List<Price> toPriceList(List<PriceEntity> priceEntities);
+    public PriceEntity toPriceEntity(Price price) {
+        return price == null ? null : modelMapper.map(price, PriceEntity.class);
+    }
 
+    public Price toPrice(PriceEntity entity) {
+        return entity == null ? null : modelMapper.map(entity, Price.class);
+    }
+
+    public List<Price> toPriceList(List<PriceEntity> entities) {
+        if (entities == null) {
+            return Collections.emptyList();
+        }
+        return entities.stream()
+                .map(this::toPrice)
+                .toList();
+    }
+    
 }

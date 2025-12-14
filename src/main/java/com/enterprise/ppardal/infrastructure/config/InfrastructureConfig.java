@@ -16,4 +16,5 @@ public class InfrastructureConfig {
             PricesPersistenceMapper mapper) {
         return new PricesRepositoryAdapter(pricesRepository, mapper);
     }
+    
 }

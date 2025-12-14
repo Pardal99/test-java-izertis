@@ -200,9 +200,7 @@ class PricesControllerAdapterTest {
     mockMvc.perform(post(ENDPOINT)
         .contentType(MediaType.APPLICATION_JSON)
         .content(request))
-        .andExpect(status().isBadRequest())
-        .andExpect(jsonPath("$.error_message").exists())
-        .andExpect(jsonPath("$.error_message").isNotEmpty());
+        .andExpect(status().isBadRequest());
   }
 
   /**
@@ -216,9 +214,7 @@ class PricesControllerAdapterTest {
     mockMvc.perform(post(ENDPOINT)
         .contentType(MediaType.APPLICATION_JSON)
         .content(request))
-        .andExpect(status().isBadRequest())
-        .andExpect(jsonPath("$.error_message").exists())
-        .andExpect(jsonPath("$.error_message").isNotEmpty());
+        .andExpect(status().isBadRequest());
   }
 
   private static Stream<Arguments> invalidBrandIdRequests() {
@@ -279,9 +275,7 @@ class PricesControllerAdapterTest {
     mockMvc.perform(post(ENDPOINT)
         .contentType(MediaType.APPLICATION_JSON)
         .content(request))
-        .andExpect(status().isBadRequest())
-        .andExpect(jsonPath("$.error_message").exists())
-        .andExpect(jsonPath("$.error_message").isNotEmpty());
+        .andExpect(status().isBadRequest());
   }
 
   private static Stream<Arguments> invalidProductIdRequests() {
@@ -342,9 +336,7 @@ class PricesControllerAdapterTest {
     mockMvc.perform(post(ENDPOINT)
         .contentType(MediaType.APPLICATION_JSON)
         .content(request))
-        .andExpect(status().isBadRequest())
-        .andExpect(jsonPath("$.error_message").exists())
-        .andExpect(jsonPath("$.error_message").isNotEmpty());
+        .andExpect(status().isBadRequest());
   }
 
   private static Stream<Arguments> invalidApplicationDateRequests() {

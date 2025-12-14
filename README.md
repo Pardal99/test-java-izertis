@@ -81,3 +81,14 @@ Example request body:
 	"application_date": "2020-06-14T10:00:00+02:00"
 }
 ```
+
+## Code Coverage
+
+This project uses JaCoCo to measure test coverage.
+
+Coverage reports are generated in HTML format and can be accessed at:
+
+- `docs/jacoco/index.html`
+
+The build enforces a minimum line coverage of 80%.  
+If coverage drops below this threshold, the build will fail.

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PricesService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-test-izertis</a> &gt; <a href="index.source.html" class="el_package">com.enterprise.ppardal.application.service</a> &gt; <span class="el_source">PricesService.java</span></div><h1>PricesService.java</h1><pre class="source lang-java linenums">package com.enterprise.ppardal.application.service;
+
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.Comparator;
+import java.util.List;
+
+import com.enterprise.ppardal.application.port.PricesPersistencePort;
+import com.enterprise.ppardal.application.port.PricesServicePort;
+import com.enterprise.ppardal.domain.exception.PriceNotFoundException;
+import com.enterprise.ppardal.domain.model.Price;
+import com.enterprise.ppardal.infrastructure.adapter.api.model.request.PriceRequest;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+<span class="fc" id="L17">@Slf4j</span>
+@RequiredArgsConstructor
+public class PricesService implements PricesServicePort {
+
+    private final PricesPersistencePort pricesPersistencePort;
+
+    @Override
+    public Price findProductPriceByApplicationDate(PriceRequest request) {
+<span class="fc" id="L25">        log.info(&quot;Finding product price for request: {}&quot;, request);</span>
+
+        // Convert application date to UTC LocalDateTime to avoid timezone issues
+<span class="fc" id="L28">        log.trace(&quot;Converting application date {} to UTC LocalDateTime&quot;, request.getApplicationDate());</span>
+<span class="fc" id="L29">        LocalDateTime applicationDate = request.getApplicationDate()</span>
+<span class="fc" id="L30">                .withOffsetSameInstant(ZoneOffset.UTC)</span>
+<span class="fc" id="L31">                .toLocalDateTime();</span>
+<span class="fc" id="L32">        log.trace(&quot;Converted application date: {}&quot;, applicationDate);</span>
+
+<span class="fc" id="L34">        List&lt;Price&gt; prices = pricesPersistencePort.findTop2ByBrandIdAndProductIdAndApplicationDate(</span>
+<span class="fc" id="L35">                request.getBrandId(),</span>
+<span class="fc" id="L36">                request.getProductId(),</span>
+                applicationDate);
+
+<span class="fc" id="L39">        Price price = selectPriceByPriority(prices);</span>
+<span class="fc" id="L40">        log.info(&quot;Price found: {}&quot;, price);</span>
+<span class="fc" id="L41">        return price;</span>
+    }
+
+    /**
+     * Selects the price to apply from a list, following business rules:
+     * - If the list is empty, throws exception.
+     * - Returns the price with the highest priority.
+     */
+    private Price selectPriceByPriority(List&lt;Price&gt; prices) {
+<span class="fc bfc" id="L50" title="All 4 branches covered.">        if (prices == null || prices.isEmpty()) {</span>
+<span class="fc" id="L51">            log.info(&quot;No prices found for the given values.&quot;);</span>
+<span class="fc" id="L52">            throw new PriceNotFoundException(&quot;No price found for the given parameters.&quot;);</span>
+        }
+
+<span class="fc" id="L55">        return prices.stream()</span>
+<span class="fc" id="L56">                .max(Comparator.comparingInt(Price::getPriority))</span>
+<span class="pc" id="L57">                .orElseThrow(() -&gt; new PriceNotFoundException(&quot;No price found for the given parameters.&quot;));</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

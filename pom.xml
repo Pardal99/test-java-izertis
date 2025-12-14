@@ -31,7 +31,7 @@
 		<sonar.organization>pardal99</sonar.organization>
 		<sonar.projectKey>Pardal99_test-java-izertis</sonar.projectKey>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.coverage.jacoco.xmlReportPaths>docs/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+		<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 	</properties>
 
 	<dependencies>
@@ -118,7 +118,6 @@
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacoco-maven-plugin.version}</version>
 				<configuration>
-					<outputDirectory>${project.basedir}/docs/jacoco</outputDirectory>
 					<rules>
 						<rule>
 							<element>BUNDLE</element>

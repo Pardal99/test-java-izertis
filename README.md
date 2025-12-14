@@ -93,3 +93,28 @@ A full **HTML coverage report** is generated during the build process and publis
 The coverage report is publicly available at:
 
 https://pardal99.github.io/test-java-izertis/jacoco/index.html
+
+
+## Continuous Integration (CI)
+
+This project includes a **GitHub Actions CI pipeline** to automatically validate code quality on each relevant change.
+
+The pipeline is responsible for:
+
+- Compiling the project
+
+```bash
+mvn clean -U package -Dmaven.test.skip=true
+```
+
+- Executing unit tests
+
+```bash
+mvn test
+```
+
+- Generating a JaCoCo coverage report
+
+```bash
+mvn jacoco:report jacoco:check
+```

@@ -30,22 +30,69 @@ Sample data in the `PRICES` table used by the exercise (an explicit surrogate `i
 - To keep the tests deterministic and aligned with the expected outcomes, the example times are interpreted as Madrid local time and ared converted by the application to UTC before querying the database.
 - This assumption is explicitly documented to avoid hidden or implicit timezone conversions and to ensure clarity and consistency in test execution.
 
-## Running the Application
+## Continuous Integration (CI)
 
-The application can be started using Maven:
+This project includes a **GitHub Actions CI pipeline** to automatically validate code and quality on each change.
 
-```bash
-mvn spring-boot:run
-```
+The pipeline covers:
+- Project build and compilation
+- Unit test execution
+- Code quality analysis (SonarCloud)
 
-## Functioanl Testing
+Also includes a **GitHub Actions CI pipeline** that is manually executed on the desired branch for dependency analysis.
 
-This project exposes a REST API documented using **Swagger UI** for functional testing. Once the application is running, you can access Swagger UI at:
+## Code Coverage and Quality Report
 
-http://localhost:8080/swagger-ui.html
+This project uses **JaCoCo** to measure test coverage and enforce basic quality standards.
+
+### 📊 Coverage Report
+
+### Code Quality Analysis (SonarCloud)
+
+This project is integrated with SonarCloud to analyze code quality and test coverage.
+
+Due to SonarCloud Free plan limitations:
+- Full analysis is available for the `master` branch
+
+The SonarCloud project is public and can be accessed at:
+
+https://sonarcloud.io/summary/overall?id=Pardal99_test-java-izertis&branch=master
+
+## Dependency Vulnerability Analysis (OWASP)
+
+This project includes **OWASP Dependency-Check** to detect known vulnerabilities in third-party dependencies.
+
+The security analysis is:
+- Executed **manually** via GitHub Actions
+- Intended for **on-demand security reviews**
+- Designed to avoid impacting the regular CI pipeline
+
+After execution, the generated **HTML vulnerability report** is published using **GitHub Pages**.
+
+### 🔐 OWASP Dependency-Check Report
+
+The latest dependency vulnerability report is publicly available at:
+
+https://pardal99.github.io/test-java-izertis/dependency-check/dependency-check-report.html
+
+This report reflects the most recent successful execution of the security workflow.
+
+## Functional Testing
+
+The application is publicly deployed using **Railway**, providing a live environment to access and validate the API without local setup.
+
+### 🌐 Public API URL
+
+The service is available at:
+
+https://test-java-izertis-production.up.railway.app
+
+The application is exposed over **HTTPS**, with the runtime and networking fully managed by Railway.
 
 
-Also, you can import the **Postman collection** for this API:
+### 📬 API Testing (Postman)
+
+A **Postman collection** is provided to simplify API testing.
 
 - **File:** [docs/postman/test-java-izertis.postman_collection.json](./docs/postman/test-java-izertis.postman_collection.json) — import this file in Postman (Import → File).
 
@@ -81,48 +128,3 @@ Example request body:
 	"application_date": "2020-06-14T10:00:00+02:00"
 }
 ```
-
-## Code Coverage and Quality Report
-
-This project uses **JaCoCo** to measure test coverage and enforce basic quality standards.
-
-A full **HTML coverage report** is generated during the build process and published using **GitHub Pages**, allowing easy review without requiring local execution.
-
-### 📊 Coverage Report
-
-The coverage report is publicly available at:
-
-https://pardal99.github.io/test-java-izertis/jacoco/index.html
-
-### Code Quality Analysis (SonarCloud)
-
-This project is integrated with SonarCloud to analyze code quality and test coverage.
-
-Due to SonarCloud Free plan limitations:
-- Full analysis is available for the `master` branch
-
-The SonarCloud project is public and can be accessed at:
-https://sonarcloud.io/project/overview?id=Pardal99_test-java-izertis
-
-## Dependency Vulnerability Analysis (OWASP)
-
-This project includes **OWASP Dependency-Check** to detect known vulnerabilities in third-party dependencies.
-
-The security analysis is:
-- Executed **manually** via GitHub Actions
-- Intended for **on-demand security reviews**
-- Designed to avoid impacting the regular CI pipeline
-
-After execution, the generated **HTML vulnerability report** is published using **GitHub Pages**.
-
-### 🔐 OWASP Dependency-Check Report
-
-The latest dependency vulnerability report is publicly available at:
-
-https://pardal99.github.io/test-java-izertis/dependency-check/dependency-check-report.html
-
-This report reflects the most recent successful execution of the security workflow.
-
-## Continuous Integration (CI)
-
-This project includes a **GitHub Actions CI pipeline** to automatically validate code and quality on each change.

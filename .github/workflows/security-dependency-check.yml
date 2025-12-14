@@ -54,7 +54,7 @@ jobs:
       - name: Prepare Dependency-Check report for GitHub Pages
         run: |
           mkdir -p pages/dependency-check
-          cp -r docs/dependency-check/* pages/dependency-check/
+          cp target/dependency-check-report.html pages/dependency-check/
 
       # GitHub Pages artifact (HTML)
       - name: Upload GitHub Pages artifact

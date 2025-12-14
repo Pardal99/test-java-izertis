@@ -160,9 +160,6 @@
 				<version>${dependency-check-maven.version}</version>
 				<configuration>
 					<format>HTML</format>
-					<outputDirectory>
-						${project.basedir}/docs/dependency-check
-					</outputDirectory>
 					<!-- Timeouts (en milisegundos) 10 minutos -->
 					<connectionTimeout>600000</connectionTimeout>
 					<readTimeout>600000</readTimeout>

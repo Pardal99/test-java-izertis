@@ -118,3 +118,13 @@ mvn test
 ```bash
 mvn jacoco:report jacoco:check
 ```
+
+### Code Quality Analysis (SonarCloud)
+
+This project is integrated with SonarCloud to analyze code quality and test coverage.
+
+Due to SonarCloud Free plan limitations:
+- Full analysis is available for the `main` branch
+
+The SonarCloud project is public and can be accessed at:
+https://sonarcloud.io/project/overview?id=Pardal99_test-java-izertis

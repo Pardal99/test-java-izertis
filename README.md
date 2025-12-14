@@ -93,3 +93,38 @@ A full **HTML coverage report** is generated during the build process and publis
 The coverage report is publicly available at:
 
 https://pardal99.github.io/test-java-izertis/jacoco/index.html
+
+
+## Continuous Integration (CI)
+
+This project includes a **GitHub Actions CI pipeline** to automatically validate code quality on each relevant change.
+
+The pipeline is responsible for:
+
+- Compiling the project
+
+```bash
+mvn clean -U package -Dmaven.test.skip=true
+```
+
+- Executing unit tests
+
+```bash
+mvn test
+```
+
+- Generating a JaCoCo coverage report
+
+```bash
+mvn jacoco:report jacoco:check
+```
+
+### Code Quality Analysis (SonarCloud)
+
+This project is integrated with SonarCloud to analyze code quality and test coverage.
+
+Due to SonarCloud Free plan limitations:
+- Full analysis is available for the `main` branch
+
+The SonarCloud project is public and can be accessed at:
+https://sonarcloud.io/project/overview?id=Pardal99_test-java-izertis

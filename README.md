@@ -94,37 +94,35 @@ The coverage report is publicly available at:
 
 https://pardal99.github.io/test-java-izertis/jacoco/index.html
 
-
-## Continuous Integration (CI)
-
-This project includes a **GitHub Actions CI pipeline** to automatically validate code quality on each relevant change.
-
-The pipeline is responsible for:
-
-- Compiling the project
-
-```bash
-mvn clean -U package -Dmaven.test.skip=true
-```
-
-- Executing unit tests
-
-```bash
-mvn test
-```
-
-- Generating a JaCoCo coverage report
-
-```bash
-mvn jacoco:report jacoco:check
-```
-
 ### Code Quality Analysis (SonarCloud)
 
 This project is integrated with SonarCloud to analyze code quality and test coverage.
 
 Due to SonarCloud Free plan limitations:
-- Full analysis is available for the `main` branch
+- Full analysis is available for the `master` branch
 
 The SonarCloud project is public and can be accessed at:
 https://sonarcloud.io/project/overview?id=Pardal99_test-java-izertis
+
+## Dependency Vulnerability Analysis (OWASP)
+
+This project includes **OWASP Dependency-Check** to detect known vulnerabilities in third-party dependencies.
+
+The security analysis is:
+- Executed **manually** via GitHub Actions
+- Intended for **on-demand security reviews**
+- Designed to avoid impacting the regular CI pipeline
+
+After execution, the generated **HTML vulnerability report** is published using **GitHub Pages**.
+
+### 🔐 OWASP Dependency-Check Report
+
+The latest dependency vulnerability report is publicly available at:
+
+https://pardal99.github.io/test-java-izertis/dependency-check/dependency-check-report.html
+
+This report reflects the most recent successful execution of the security workflow.
+
+## Continuous Integration (CI)
+
+This project includes a **GitHub Actions CI pipeline** to automatically validate code and quality on each change.

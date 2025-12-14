@@ -6,12 +6,12 @@ permissions:
 on:
   push:
     branches:
-      - main
+      - master
       - release/**
       - feature/github-actions
   pull_request:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:

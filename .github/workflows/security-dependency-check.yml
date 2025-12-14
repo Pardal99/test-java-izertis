@@ -11,7 +11,7 @@ on:
       branch:
         description: "Branch to analyze"
         required: true
-        default: "main"
+        default: "master"
 
 jobs:
   dependency-check:

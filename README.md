@@ -82,13 +82,14 @@ Example request body:
 }
 ```
 
-## Code Coverage
+## Code Coverage and Quality Report
 
-This project uses JaCoCo to measure test coverage.
+This project uses **JaCoCo** to measure test coverage and enforce basic quality standards.
 
-Coverage reports are generated in HTML format and can be accessed at:
+A full **HTML coverage report** is generated during the build process and published using **GitHub Pages**, allowing easy review without requiring local execution.
 
-- `docs/jacoco/index.html`
+### 📊 Coverage Report
 
-The build enforces a minimum line coverage of 80%.  
-If coverage drops below this threshold, the build will fail.
+The coverage report is publicly available at:
+
+https://pardal99.github.io/test-java-izertis/jacoco/index.html

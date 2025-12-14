@@ -102,7 +102,7 @@ Due to SonarCloud Free plan limitations:
 - Full analysis is available for the `master` branch
 
 The SonarCloud project is public and can be accessed at:
-https://sonarcloud.io/project/overview?id=Pardal99_test-java-izertis
+https://sonarcloud.io/summary/overall?id=Pardal99_test-java-izertis&branch=master
 
 ## Dependency Vulnerability Analysis (OWASP)
 

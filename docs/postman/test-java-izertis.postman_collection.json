@@ -210,7 +210,7 @@
 		},
 		{
 			"key": "baseUrlRailway",
-			"value": ""
+			"value": "https://test-java-izertis-production.up.railway.app/api/v1"
 		}
 	]
 }

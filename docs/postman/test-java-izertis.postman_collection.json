@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "c819d484-bf0d-4b65-8702-e6bf6599b7e5",
-		"name": "test-java-izertis",
+		"_postman_id": "28254082-b717-4ecd-a842-2bcfb20e54b7",
+		"name": "test-java-izertis - functional tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "34552655"
 	},
@@ -14,12 +14,31 @@
 					"item": [
 						{
 							"name": "use-case-1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+											"pm.test('Response is JSON', () => pm.response.to.be.json);",
+											"const body = pm.response.json();",
+											"['product_id','brand_id','price_list','start_date','end_date','price'].forEach(f => pm.test(`Field ${f} exists`, () => pm.expect(body).to.have.property(f)));",
+											"pm.test('Price is 35.50', () => {",
+											"    pm.expect(body.price).to.eql(35.50);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"brand_id\": 1,\r\n  \"product_id\": 35455,\r\n  \"application_date\": \"2020-06-14T10:00:00+02:00\"\r\n}",
+									"raw": "{\n  \"brand_id\": 1,\n  \"product_id\": 35455,\n  \"application_date\": \"2020-06-14T10:00:00+02:00\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -41,12 +60,31 @@
 						},
 						{
 							"name": "use-case-2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+											"pm.test('Response is JSON', () => pm.response.to.be.json);",
+											"const body = pm.response.json();",
+											"['product_id','brand_id','price_list','start_date','end_date','price'].forEach(f => pm.test(`Field ${f} exists`, () => pm.expect(body).to.have.property(f)));",
+											"pm.test('Price is 35.50', () => {",
+											"    pm.expect(body.price).to.eql(35.50);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"brand_id\": 1,\r\n  \"product_id\": 35455,\r\n  \"application_date\": \"2020-06-14T16:00:00+02:00\"\r\n}",
+									"raw": "{\n  \"brand_id\": 1,\n  \"product_id\": 35455,\n  \"application_date\": \"2020-06-14T16:00:00+02:00\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -68,12 +106,31 @@
 						},
 						{
 							"name": "use-case-3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+											"pm.test('Response is JSON', () => pm.response.to.be.json);",
+											"const body = pm.response.json();",
+											"['product_id','brand_id','price_list','start_date','end_date','price'].forEach(f => pm.test(`Field ${f} exists`, () => pm.expect(body).to.have.property(f)));",
+											"pm.test('Price is 35.50', () => {",
+											"    pm.expect(body.price).to.eql(35.50);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"brand_id\": 1,\r\n  \"product_id\": 35455,\r\n  \"application_date\": \"2020-06-14T10:00:00+02:00\"\r\n}",
+									"raw": "{\n  \"brand_id\": 1,\n  \"product_id\": 35455,\n  \"application_date\": \"2020-06-14T10:00:00+02:00\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -95,12 +152,31 @@
 						},
 						{
 							"name": "use-case-4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+											"pm.test('Response is JSON', () => pm.response.to.be.json);",
+											"const body = pm.response.json();",
+											"['product_id','brand_id','price_list','start_date','end_date','price'].forEach(f => pm.test(`Field ${f} exists`, () => pm.expect(body).to.have.property(f)));",
+											"pm.test('Price is 30.50', () => {",
+											"    pm.expect(body.price).to.eql(30.50);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"brand_id\": 1,\r\n  \"product_id\": 35455,\r\n  \"application_date\": \"2020-06-15T10:00:00+02:00\"\r\n}",
+									"raw": "{\n  \"brand_id\": 1,\n  \"product_id\": 35455,\n  \"application_date\": \"2020-06-15T10:00:00+02:00\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -122,12 +198,31 @@
 						},
 						{
 							"name": "use-case-5",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+											"pm.test('Response is JSON', () => pm.response.to.be.json);",
+											"const body = pm.response.json();",
+											"['product_id','brand_id','price_list','start_date','end_date','price'].forEach(f => pm.test(`Field ${f} exists`, () => pm.expect(body).to.have.property(f)));",
+											"pm.test('Price is 38.95', () => {",
+											"    pm.expect(body.price).to.eql(38.95);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"brand_id\": 1,\r\n  \"product_id\": 35455,\r\n  \"application_date\": \"2020-06-16T21:00:00+02:00\"\r\n}",
+									"raw": "{\n  \"brand_id\": 1,\n  \"product_id\": 35455,\n  \"application_date\": \"2020-06-16T21:00:00+02:00\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -149,12 +244,31 @@
 						},
 						{
 							"name": "extra-use-case-6",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+											"pm.test('Response is JSON', () => pm.response.to.be.json);",
+											"const body = pm.response.json();",
+											"['product_id','brand_id','price_list','start_date','end_date','price'].forEach(f => pm.test(`Field ${f} exists`, () => pm.expect(body).to.have.property(f)));",
+											"pm.test('Price is 25.45', () => {",
+											"    pm.expect(body.price).to.eql(25.45);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"brand_id\": 1,\r\n  \"product_id\": 35455,\r\n  \"application_date\": \"2020-06-14T18:00:00+02:00\"\r\n}",
+									"raw": "{\n  \"brand_id\": 1,\n  \"product_id\": 35455,\n  \"application_date\": \"2020-06-14T18:00:00+02:00\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -205,12 +319,12 @@
 	],
 	"variable": [
 		{
-			"key": "baseUrlLocalhost",
-			"value": "http://localhost:8080/api/v1"
-		},
-		{
 			"key": "baseUrlRailway",
 			"value": "https://test-java-izertis-production.up.railway.app/api/v1"
+		},
+		{
+			"key": "baseUrlLocalhost",
+			"value": "http://localhost:8080/api/v1"
 		}
 	]
 }

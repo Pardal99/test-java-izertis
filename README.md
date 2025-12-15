@@ -98,9 +98,19 @@ A **Postman collection** is provided to simplify API testing.
 
 Quick steps:
 
-1. Open Postman → Import → File.
-2. Select `docs/postman/test-java-izertis.postman_collection.json`.
-3. Run the requests from the imported collection.
+1. Open Postman Web or Postman App:  
+   https://web.postman.co/
+
+2. Import the Postman collection provided in the repository  
+   (`docs/postman/test-java-izertis.postman_collection.json`)
+
+3. Open the imported collection
+
+4. Click **Run** to open the Collection Runner
+
+5. Execute all requests in sequence
+
+6. Review the test results (pass / fail) directly in the UI
 
 There are 5 use cases based on the exercise specification. We assume **Madrid timezone (GMT+2)** for the dates.
 
